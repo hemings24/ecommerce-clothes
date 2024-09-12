@@ -1,0 +1,243 @@
+1. Project & Layout Setup
+laravel new ecommerce-clothes
+mysql -u root -p -e "CREATE DATABASE ecommerce_clothes"
+.env
+composer require livewire/livewire
+copy ecom-templates\assets to public
+new folder: resources\views\layouts
+new file: app.blade.php
+copy ecom-templates\index.html to app.blade.php
+resources\views\layouts\app.blade
+php artisan make:livewire HomeComponent
+resources\views\livewire\home-component.blade
+routes\web
+
+2. Create Shop, Cart And Checkout Page
+php artisan make:livewire ShopComponent
+php artisan make:livewire CartComponent
+php artisan make:livewire CheckoutComponent
+resources\views\livewire\shop-component.blade
+resources\views\livewire\cart-component.blade
+resources\views\livewire\checkout-component.blade
+routes\web
+
+3. Admin and User Authentication
+rename app.blade to app1.blade
+copy routes\web to text file
+composer require laravel/breeze --dev
+php artisan breeze:install
+copy text file to routes\web
+database\migrations\create_users_table
+php artisan migrate
+npm install && npm run build
+del app.blade
+rename app1.blade to app.blade
+resources\views\layouts\app.blade
+php artisan make:middleware AuthAdmin
+app\Http\Middleware\AuthAdmin
+app\Http\Kernel
+app\Providers\RouteServiceProvider
+php artisan make:livewire Admin/AdminDashboardComponent
+php artisan make:livewire User/UserDashboardComponent
+routes\web
+resources\views\livewire\admin\admin-dashboard-component.blade
+resources\views\livewire\user\user-dashboard-component.blade
+resources\views\layouts\app.blade
+
+4. Changing the Login and Register Page Layout
+resources\views\auth\login.blade
+resources\views\auth\register.blade
+
+5. Making Shop Page Products Dynamic
+resources\views\layouts\app.blade
+php artisan make:model Category -m
+php artisan make:model Product -m
+database\migrations\categories
+database\migrations\products
+php artisan migrate
+php artisan make:factory CategoryFactory -model=Category
+php artisan make:factory ProductFactory -model=Product
+database\factories\CategoryFactory
+database\factories\ProductFactory
+database\seeders\DatabaseSeeder
+php artisan db:seed
+app\http\livewire\ShopComponent
+resources\views\livewire\shop-component.blade
+
+6. Create Product Details Page
+php artisan make:livewire DetailsComponent
+routes\web
+app\http\livewire\DetailsComponent
+resources\views\livewire\details-component.blade
+resources\views\livewire\shop-component.blade
+
+7. Make Related And New Products Section Dynamic On Product Details Page
+http\livewire\DetailsComponent
+resources\views\livewire\details-component.blade
+resources\views\livewire\shop-component.blade
+
+8. Shopping Cart
+composer require hardevine/shoppingcart
+config\app.php(line: 198+214)
+php artisan vendor:publish --provider="Gloudemans\Shoppingcart\ShoppingcartServiceProvider" --tag="config"
+app\Http\Livewire\ShopComponent
+resources\views\livewire\shop-component.blade
+resources\views\livewire\cart-component.blade
+config\cart.php(change tax amount)
+app\Http\Livewire\DetailsComponent
+resources\views\livewire\details-component.blade
+
+9. Update Cart Quantity
+app\Http\Livewire\CartComponent
+resources\views\livewire\cart-component.blade
+
+10.  Delete Cart Item
+app\Http\Livewire\CartComponent
+resources\views\livewire\cart-component.blade
+
+11. Make Cart Icon Dynamic
+php artisan make:livewire CartIconComponent
+resources\views\layouts\app.blade
+resources\views\livewire\cart-icon-component.blade
+app\Http\Livewire\CartIconComponent
+app\Http\Livewire\CartComponent
+
+12. Product Sorting and Products Per Page
+app\Http\Livewire\ShopComponent
+resources\views\livewire\shop-component.blade
+
+13. Products By Category
+app\Http\Livewire\ShopComponent
+resources\views\livewire\shop-component.blade
+php artisan make:livewire CategoryComponent
+app\Http\Livewire\CategoryComponent
+resources\views\livewire\category-component.blade
+routes\web
+
+14. Search Products
+php artisan make:livewire SearchComponent
+php artisan make:livewire HeaderSearchComponent
+app\Http\Livewire\SearchComponent
+app\Http\Livewire\HeaderSearchComponent
+resources\views\livewire\search-component.blade
+resources\views\livewire\header-search-component.blade
+resources\views\layouts\app.blade
+routes\web
+
+15. Add Price Filter On Shop Page
+resources\views\layouts\app.blade
+app\Http\Livewire\ShopComponent
+resources\views\livewire\shop-component.blade
+public\assets\js\main.js
+
+16. Add Product To Wishlist
+php artisan make:livewire WishlistIconComponent
+app\Http\Livewire\ShopComponent
+resources\views\livewire\shop-component.blade
+app\Http\Livewire\WishlistIconComponent
+resources\views\livewire\wishlist-icon-component.blade
+app\Http\Livewire\CartComponent
+app\Http\Livewire\SearchComponent
+resources\views\livewire\cart-component.blade
+resources\views\livewire\cart-icon-component.blade
+
+17. Remove Product From Wishlist
+app\Http\Livewire\ShopComponent
+resources\views\livewire\shop-component.blade
+
+18. Show All Wishlisted Products
+php artisan make:livewire WishlistComponent
+app\Http\Livewire\WishlistComponent
+resources\views\livewire\wishlist-component.blade
+resources\views\livewire\wishlist-icon-component.blade
+routes\web
+
+19. Admin Category Page
+php artisan make:livewire admin/AdminCategoriesComponent
+resources\views\layouts\app.blade
+app\Http\Livewire\Admin\AdminCategoriesComponent
+resources\views\livewire\admin\admin-categories-component.blade
+routes\web
+
+20. Admin Add New Category
+php artisan make:livewire admin/AdminAddCategoryComponent
+app\Http\Livewire\Admin\AdminAddCategoryComponent
+resources\views\livewire\admin\admin-add-category-component.blade
+resources\views\livewire\admin\admin-categories-component.blade
+routes\web
+
+21. Admin Edit Category
+php artisan make:livewire admin/AdminEditCategoryComponent
+app\Http\Livewire\Admin\AdminEditCategoryComponent
+resources\views\livewire\admin\admin-edit-category-component.blade
+resources\views\livewire\admin\admin-categories-component.blade
+routes\web
+
+22. Admin Delete Category
+app\Http\Livewire\Admin\AdminCategoriesComponent
+resources\views\livewire\admin\admin-categories-component.blade
+
+23. Admin Product Page
+php artisan make:livewire admin/AdminProductComponent
+app\Http\Livewire\Admin\AdminProductComponent
+resources\views\livewire\admin\admin-product-component.blade
+app\Models\Product
+resources\views\layouts\app.blade
+routes\web
+
+24. Admin Add New Product
+php artisan make:livewire admin/AdminAddProductComponent
+app\Http\Livewire\Admin\AdminAddProductComponent
+resources\views\livewire\admin\admin-add-product-component.blade
+resources\views\livewire\admin\admin-product-component.blade
+config\filesystems
+routes\web
+
+25. Admin Edit Product
+php artisan make:livewire admin/AdminEditProductComponent
+app\Http\Livewire\Admin\AdminEditProductComponent
+resources\views\livewire\admin\admin-edit-product-component.blade
+resources\views\livewire\admin\admin-product-component.blade
+routes\web
+
+26. Admin Delete Product
+app\Http\Livewire\Admin\AdminProductComponent
+resources\views\livewire\admin\admin-product-component.blade
+
+27. Admin Making Home Page Slider Dynamic
+php artisan make:model HomeSlider -m
+database\migrations\home_sliders
+php artisan migrate
+php artisan make:livewire admin/AdminHomeSliderComponent
+php artisan make:livewire admin/AdminAddHomeSlideComponent
+php artisan make:livewire admin/AdminEditHomeSlideComponent
+app\Http\Livewire\Admin\AdminHomeSliderComponent
+resources\views\livewire\admin\admin-home-slider-component.blade
+app\Http\Livewire\Admin\AdminAddHomeSlideComponent
+resources\views\livewire\admin\admin-add-home-slide-component.blade
+app\Http\Livewire\Admin\AdminEditHomeSlideComponent
+resources\views\livewire\admin\admin-edit-home-slide-component.blade
+resources\views\layouts\app
+app\Http\Livewire\HomeComponent
+resources\views\livewire\home-component
+routes\web
+
+28. Admin Show Latest Products On Homepage
+app\Http\Livewire\HomeComponent
+resources\views\livewire\home-component
+
+29. Admin Show Featured Products On Homepage
+app\Http\Livewire\HomeComponent
+resources\views\livewire\home-component
+
+30. Admin Show Popular Categories On Homepage
+php artisan make:migration add_image_and_is_popular_column_to_categories_table --table=categories
+database\migrations\add_image_and_is_popular_column_to_categories_table
+app\Http\Livewire\Admin\AdminAddCategoryComponent
+resources\views\livewire\admin\admin-add-category-component
+app\Http\Livewire\Admin\AdminEditCategoryComponent
+resources\views\livewire\admin\admin-edit-category-component
+app\Http\Livewire\Admin\AdminCategoriesComponent
+resources\views\livewire\admin\admin-categories-component
+app\Http\Livewire\HomeComponent
+resources\views\livewire\home-component
