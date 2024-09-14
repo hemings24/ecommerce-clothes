@@ -35,17 +35,17 @@
                                 @if(Session::has('message'))
                                     <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                                 @endif
-                                <form wire:submit.prevent="addSlide">
+                                <form wire:submit="addSlide">
                                     <div class="mb-3 mt-3">
                                         <label class="form-label">Top-Title</label>
-                                        <input type="text" class="form-control" placeholder="Enter Slide Top-Title" wire:model="top_title"/>
+                                        <input type="text" class="form-control" placeholder="Enter Slide Top-Title" wire:model.live="top_title"/>
                                         @error('top_title')
                                             <p class="text-danger">{{$message}}</p>
                                         @enderror
                                     </div>
                                     <div class="mb-3 mt-3">
                                         <label class="form-label">Title</label>
-                                        <input type="text" class="form-control" placeholder="Enter Slide Title" wire:model="title"/>
+                                        <input type="text" class="form-control" placeholder="Enter Slide Title" wire:model.live="title"/>
                                         @error('title')
                                             <p class="text-danger">{{$message}}</p>
                                         @enderror
@@ -53,7 +53,7 @@
 
                                     <div class="mb-3 mt-3">
                                         <label class="form-label">Sub-Title</label>
-                                        <input type="text" class="form-control" placeholder="Enter Slide Sub-Title" wire:model="sub_title"/>
+                                        <input type="text" class="form-control" placeholder="Enter Slide Sub-Title" wire:model.live="sub_title"/>
                                         @error('sub_title')
                                             <p class="text-danger">{{$message}}</p>
                                         @enderror
@@ -61,7 +61,7 @@
 
                                     <div class="mb-3 mt-3">
                                         <label class="form-label">Offer</label>
-                                        <input type="text" class="form-control" placeholder="Enter Offer" wire:model="offer"/>
+                                        <input type="text" class="form-control" placeholder="Enter Offer" wire:model.live="offer"/>
                                         @error('offer')
                                             <p class="text-danger">{{$message}}</p>
                                         @enderror
@@ -69,7 +69,7 @@
 
                                     <div class="mb-3 mt-3">
                                         <label class="form-label">Link</label>
-                                        <input type="text" class="form-control" placeholder="Enter Link" wire:model="link"/>
+                                        <input type="text" class="form-control" placeholder="Enter Link" wire:model.live="link"/>
                                         @error('link')
                                             <p class="text-danger">{{$message}}</p>
                                         @enderror
@@ -77,7 +77,7 @@
 
                                     <div class="mb-3 mt-3">
                                         <label class="form-label">Status</label>
-                                        <select class="form-select" wire:model="status">
+                                        <select class="form-select" wire:model.live="status">
                                             <option value="1">Active</option>
                                             <option value="0">Inactive</option>
                                         </select>
@@ -88,7 +88,7 @@
 
                                     <div class="mb-3 mt-3">
                                         <label class="form-label">Image</label>
-                                        <input type="file" class="form-control" wire:model="image"/>
+                                        <input type="file" class="form-control" wire:model.live="image"/>
                                         @if($image)
                                             <img src="{{$image->temporaryUrl()}}" width="100"/> 
                                         @endif

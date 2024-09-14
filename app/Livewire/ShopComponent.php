@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Category;
 use App\Models\Product;
@@ -21,7 +21,7 @@ class ShopComponent extends Component
     {
         Cart::instance('cart')->add($product_id,$product_name,1,$product_price)->associate('\App\Models\Product');
         session()->flash('success_message','Item added in Cart');
-        $this->emitTo('cart-icon-component','refreshComponent');
+        $this->dispatch('refreshComponent')->to('cart-icon-component');
         return redirect()->route('shop.cart');
     }
 
@@ -38,7 +38,7 @@ class ShopComponent extends Component
     public function addToWishlist($product_id,$product_name,$product_price)
     {   
         Cart::instance('wishlist')->add($product_id,$product_name,1,$product_price)->associate('App\Models\Product');
-        $this->emitTo('wishlist-icon-component','refreshComponent');
+        $this->dispatch('refreshComponent')->to('wishlist-icon-component');
     }
 
     public function removeFromWishlist($product_id)
@@ -48,7 +48,7 @@ class ShopComponent extends Component
             if($witem->id==$product_id)
             {
                 Cart::instance('wishlist')->remove($witem->rowId);
-                $this->emitTo('wishlist-icon-component','refreshComponent');
+                $this->dispatch('refreshComponent')->to('wishlist-icon-component');
                 return;
             }
         }

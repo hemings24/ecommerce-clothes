@@ -1,5 +1,5 @@
 # ecommerce-clothes
-Laravel Ecommerce - Clothes
+Laravel (Livewire) Ecommerce - Clothes
 
 1. Download ecommerce-clothes
 2. Copy folder to Laravel projects folder

@@ -1,24 +1,24 @@
 <?php
 
-use App\Http\Livewire\HomeComponent;
-use App\Http\Livewire\ShopComponent;
-use App\Http\Livewire\DetailsComponent;
-use App\Http\Livewire\CartComponent;
-use App\Http\Livewire\WishlistComponent;
-use App\Http\Livewire\CheckoutComponent;
-use App\Http\Livewire\CategoryComponent;
-use App\Http\Livewire\SearchComponent;
-use App\Http\Livewire\User\UserDashboardComponent;
-use App\Http\Livewire\Admin\AdminDashboardComponent;
-use App\Http\Livewire\Admin\AdminCategoriesComponent;
-use App\Http\Livewire\Admin\AdminAddCategoryComponent;
-use App\Http\Livewire\Admin\AdminEditCategoryComponent;
-use App\Http\Livewire\Admin\AdminProductComponent;
-use App\Http\Livewire\Admin\AdminAddProductComponent;
-use App\Http\Livewire\Admin\AdminEditProductComponent;
-use App\Http\Livewire\Admin\AdminHomeSliderComponent;
-use App\Http\Livewire\Admin\AdminAddHomeSlideComponent;
-use App\Http\Livewire\Admin\AdminEditHomeSlideComponent;
+use App\Livewire\HomeComponent;
+use App\Livewire\ShopComponent;
+use App\Livewire\DetailsComponent;
+use App\Livewire\CartComponent;
+use App\Livewire\WishlistComponent;
+use App\Livewire\CheckoutComponent;
+use App\Livewire\CategoryComponent;
+use App\Livewire\SearchComponent;
+use App\Livewire\User\UserDashboardComponent;
+use App\Livewire\Admin\AdminDashboardComponent;
+use App\Livewire\Admin\AdminCategoriesComponent;
+use App\Livewire\Admin\AdminAddCategoryComponent;
+use App\Livewire\Admin\AdminEditCategoryComponent;
+use App\Livewire\Admin\AdminProductComponent;
+use App\Livewire\Admin\AdminAddProductComponent;
+use App\Livewire\Admin\AdminEditProductComponent;
+use App\Livewire\Admin\AdminHomeSliderComponent;
+use App\Livewire\Admin\AdminAddHomeSlideComponent;
+use App\Livewire\Admin\AdminEditHomeSlideComponent;
 use Illuminate\Support\Facades\Route;
 
 

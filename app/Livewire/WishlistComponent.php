@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Livewire\Component;
 use Cart;
@@ -14,7 +14,7 @@ class WishlistComponent extends Component
             if($witem->id==$product_id)
             {
                 Cart::instance('wishlist')->remove($witem->rowId);
-                $this->emitTo('wishlist-icon-component','refreshComponent');
+                $this->dispatch('refreshComponent')->to('wishlist-icon-component');
                 return;
             }
         }

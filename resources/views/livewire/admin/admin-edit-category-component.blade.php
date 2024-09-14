@@ -35,17 +35,17 @@
                                 @if(Session::has('message'))
                                     <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                                 @endif
-                                <form wire:submit.prevent="updateCategory">
+                                <form wire:submit="updateCategory">
                                     <div class="mb-3 mt-3">
                                         <label for="name" class="form-label">Name</label>
-                                        <input type="text" name="name" class="form-control" placeholder="Enter category name" wire:model="name" wire:keyup="generateSlug"/>
+                                        <input type="text" name="name" class="form-control" placeholder="Enter category name" wire:model.live="name" wire:keyup="generateSlug"/>
                                         @error('name')
                                             <p class="text-danger">{{$message}}</p>
                                         @enderror
                                     </div>
                                     <div class="mb-3 mt-3">
                                         <label for="name" class="form-label">Slug</label>
-                                        <input type="text" name="slug" class="form-control" placeholder="Enter category slug" wire:model="slug"/>
+                                        <input type="text" name="slug" class="form-control" placeholder="Enter category slug" wire:model.live="slug"/>
                                         @error('slug')
                                             <p class="text-danger">{{$message}}</p>
                                         @enderror
@@ -53,7 +53,7 @@
 
                                     <div class="mb-3 mt-3">
                                         <label for="image" class="form-label">Image</label>
-                                        <input type="file" class="form-control" wire:model="newimage"/>
+                                        <input type="file" class="form-control" wire:model.live="newimage"/>
                                         @error('newimage')
                                             <p class="text-danger">{{$message}}</p>
                                         @enderror
@@ -66,7 +66,7 @@
 
                                     <div class="mb-3 mt-3">
                                         <label for="is_popular" class="form-label">Popular</label>
-                                        <select class="form-control" name="is_popular" wire:model="is_popular">
+                                        <select class="form-control" name="is_popular" wire:model.live="is_popular">
                                             <option value="0">No</option>
                                             <option value="1">Yes</option>
                                         </select>

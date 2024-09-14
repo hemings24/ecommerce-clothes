@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Category;
 use App\Models\Product;
@@ -27,7 +27,7 @@ class SearchComponent extends Component
     {
         Cart::instance('cart')->add($product_id,$product_name,1,$product_price)->associate('\App\Models\Product');
         session()->flash('success_message','Item added in Cart');
-        $this->emitTo('cart-icon-component','refreshComponent');
+        $this->dispatch('refreshComponent')->to('cart-icon-component');
         return redirect()->route('shop.cart');
     }
 

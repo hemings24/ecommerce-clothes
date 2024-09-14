@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Livewire\Component;
 use Cart;
@@ -12,27 +12,27 @@ class CartComponent extends Component
         $product = Cart::instance('cart')->get($rowId);
         $qty = $product->qty + 1;
         Cart::instance('cart')->update($rowId,$qty);
-        $this->emitTo('cart-icon-component','refreshComponent');
+        $this->dispatch('refreshComponent')->to('cart-icon-component');
     }
     public function decreaseQuantity($rowId)
     {
         $product = Cart::instance('cart')->get($rowId);
         $qty = $product->qty - 1;
         Cart::instance('cart')->update($rowId,$qty);
-        $this->emitTo('cart-icon-component','refreshComponent');
+        $this->dispatch('refreshComponent')->to('cart-icon-component');
     }
 
     public function destroy($id)
     {
         Cart::instance('cart')->remove($id);
-        $this->emitTo('cart-icon-component','refreshComponent');
+        $this->dispatch('refreshComponent')->to('cart-icon-component');
         session()->flash('success_message','Item has been removed');
     }
 
     public function clearAll()
     {
         Cart::instance('cart')->destroy();
-        $this->emitTo('cart-icon-component','refreshComponent');
+        $this->dispatch('refreshComponent')->to('cart-icon-component');
     }
 
     public function render()
