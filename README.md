@@ -3,7 +3,7 @@ Laravel (Livewire) Ecommerce - Clothes
 
 1. Download ecommerce-clothes
 2. Copy folder to Laravel projects folder
-3. Copy ecommerce-clothes\.env.example to ecommerce-clothes\.env
+3. Copy ecommerce-clothes\\.env.example to ecommerce-clothes\\.env
 4. CLI: cd ecommerce-clothes
 5. composer install
 6. php artisan key:generate
